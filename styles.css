@@ -144,8 +144,8 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9; /* Color de fondo claro */
-    color: #333; /* Color de texto */
+    background-color: #ffffff;
+    color: #333; 
 }
 
 option {

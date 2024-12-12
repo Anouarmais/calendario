@@ -5,72 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda Semanal</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <h1>Calendario semana 1</h1>
   <div class="calendar">
     <div class="day" id="monday">
       <h2>Lunes</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('monday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="tuesday">
       <h2>Martes</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('tuesday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="wednesday">
       <h2>Miércoles</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('wednesday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="thursday">
       <h2>Jueves</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('thursday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="friday">
       <h2>Viernes</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('friday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="saturday">
       <h2>Sábado</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('saturday')">Agregar</button>
+      <button>Agregar</button>
     </div>
     <div class="day" id="sunday">
       <h2>Domingo</h2>
-      
       <ul class="tasks"></ul>
-      <button onclick="openModal('sunday')">Agregar</button>
+      <button>Agregar</button>
     </div>
   </div>
-
- <!-- Modal -->
- <div id="taskModal" class="modal">
+  <div id="taskModal" class="modal" style="display: none;">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="close">&times;</span>
       <h2>Añadir/Editar Tarea</h2>
-      <form id="taskForm" onsubmit="submitTask(event)" data-day-id="">
+      <form id="taskForm">
         <input type="text" id="taskName" placeholder="Nombre de la tarea" required />
         <select id="modal-task-type">
-          <option value="work" class="work">Trabajo</option>
-          <option value="personal" class="personal">Personal</option>
-          <option value="study" class="study">Estudio</option>
+          <option value="work">Trabajo</option>
+          <option value="personal">Personal</option>
+          <option value="study">Estudio</option>
         </select>
         <button type="submit">Guardar</button>
       </form>
     </div>
   </div>
-
-
-  <script src="script.js"></script>
+  
 </body>
 </html>

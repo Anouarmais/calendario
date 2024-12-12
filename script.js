@@ -1,56 +1,60 @@
-// Función para abrir el modal
-function openModal(dayId) {
-    document.getElementById('taskModal').style.display = 'block';
-    document.getElementById('taskForm').dataset.day = dayId;
+$(document).ready(function () {
+  function openModal(dayId) {
+    $('#taskModal').show();
+    $('#taskForm').data('day', dayId);
   }
-  
-  // Función para cerrar el modal
+
   function closeModal() {
-    document.getElementById('taskModal').style.display = 'none';
+    $('#taskModal').hide();
+    $('#taskName').val('');
   }
-  
-  // Función para agregar una tarea
-  document.getElementById('taskForm').addEventListener('submit', function(event) {
+
+  $('.calendar .day button').on('click', function () {
+    const dayId = $(this).closest('.day').attr('id');
+    openModal(dayId);
+  });
+
+  $('#taskForm').on('submit', function (event) {
     event.preventDefault();
-    var dayId = this.dataset.day;
-    var taskName = document.getElementById('taskName').value.trim();
-    var taskType = document.getElementById('modal-task-type').value;
-  
+    const dayId = $(this).data('day');
+    const taskName = $('#taskName').val().trim();
+    const taskType = $('#modal-task-type').val();
+
     if (taskName === "") {
       alert("Por favor, escribe una tarea.");
       return;
     }
+
+    const $taskList = $(`#${dayId} .tasks`);
+    const $taskItem = $(`
   
-    const day = document.getElementById(dayId);
-    const taskList = day.querySelector('.tasks');
-  
-    const taskItem = document.createElement('li');
-    taskItem.className = taskType; // Asignar la clase según el tipo de tarea
-    taskItem.innerHTML = `
-      ${taskName}
-      <button onclick="editTask(this)">Editar</button>
-      <button onclick="deleteTask(this)">Eliminar</button>
-    `;
-    taskList.appendChild(taskItem);
-  
+        
+        <button id = "${dayId}" class=" ${taskType}"> ${taskName}</button>
+       
+     
+    `);
+
+    $taskList.append($taskItem);
     closeModal();
   });
-  
-  // Función para editar una tarea
-  function editTask(button) {
-    const taskItem = button.parentElement;
-    const taskText = taskItem.firstChild.nodeValue.trim();
-    const taskType = taskItem.className; // Obtener el tipo de tarea
-  
-    // Llenar el formulario con la tarea existente
-    document.getElementById('taskName').value = taskText;
-    document.getElementById('modal-task-type').value = taskType;
-    openModal(taskItem.closest('.day').id);
-  }
-  
-  // Función para eliminar una tarea
-  function deleteTask(button) {
-    const taskItem = button.parentElement;
-    taskItem.remove();
-  }
-  
+
+  $(document).on('click', '.edit', function () {
+    const $taskItem = $(this).closest('button');
+    const taskText = $taskItem.contents().get(0).nodeValue.trim();
+    const taskType = $taskItem.attr('class');
+
+    $('#taskName').val(taskText);
+    $('#modal-task-type').val(taskType);
+    const dayId = $taskItem.closest('.day').attr('id');
+    openModal(dayId);
+    $taskItem.remove();
+  });
+
+  $(document).on('click', '.delete', function () {
+    $(this).closest('li').remove();
+  });
+
+  $('.close').on('click', function () {
+    closeModal();
+  });
+});
