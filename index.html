@@ -53,15 +53,24 @@
       <h2>Añadir/Editar Tarea</h2>
       <form id="taskForm">
         <input type="text" id="taskName" placeholder="Nombre de la tarea" required />
-        <select id="modal-task-type">
-          <option value="work">Trabajo</option>
-          <option value="personal">Personal</option>
-          <option value="study">Estudio</option>
+        <textarea id="description" name="description" placeholder="Descripción"></textarea>
+        <select id="modal-task-type"> 
+          <option value="work" style="background-color: blue;">Trabajo</option>
+          <option value="personal" style="background-color: rgb(21, 255, 0);">Personal</option>
+          <option value="study" style="background-color: rgb(255, 145, 0);">Estudio</option>
         </select>
         <button type="submit">Guardar</button>
       </form>
     </div>
   </div>
-  
+  <div id="detailModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-detail">&times;</span>
+      <h2 id="detailModalTitle"></h2>
+      <p id="detailModalDescription"></p>
+      <button id="eliminar">Eliminar </button>
+      <button id="editar">Editar </button>
+    </div>
+  </div>
 </body>
 </html>

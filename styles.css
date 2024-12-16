@@ -120,9 +120,9 @@ body {
     width: 300px;
     text-align: center;
     position: relative;
-    margin: auto; /* Esto centrará el modal horizontalmente */
-    top: 50%; /* Esto centrará el modal verticalmente */
-    transform: translateY(-50%); /* Ajuste para centrar verticalmente */
+    margin: auto; 
+    top: 50%;
+    transform: translateY(-50%); 
   }
   
   .modal .close {
@@ -153,7 +153,7 @@ option {
     border-radius: 5px;
 }
 
-option.work {
+select.work {
     background-color: #007bff;
     color: white;
 }
